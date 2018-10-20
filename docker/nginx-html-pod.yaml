@@ -7,4 +7,4 @@ spec:
     - name: front-end
       image: alko89/nginx-html
       ports:
-        - containerPort: 8080
+        - containerPort: 80
