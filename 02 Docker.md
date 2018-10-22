@@ -1,27 +1,27 @@
 # Docker container
 
-`docker pull nginx`
+Install docker `apt install docker.io`
 
-`docker cp docker-nginx:/etc/nginx/conf.d/default.conf default.conf`
+Pull the offical nginx container `docker pull nginx`
 
-Edit `default.conf`.
+Coppy the default configuration file from nginx container into your project directory:
 
-Create Dockerfile.
+`docker cp docker-nginx:/etc/nginx/conf.d/default.conf nginx.conf`
 
-`docker build -t nginx-html:v1 .`
+Edit and save `nginx.conf` configuration file.
+
+Create Dockerfile that will copy `nginx.conf` and `index.html` foles in the container.
+
+Build container image `docker build -t nginx-html:v1 .`
 
 ## Docker Hub
 
-`docker login`
+Login to Docker Hub `docker login`
 
-`docker images`
+List docker images `docker images` and tag the repository on Docker Hub with CONTAINER_ID of the newly created container `docker tag CONTAINER_ID alko89/nginx-html`
 
-`docker tag CONTAINER_ID alko89/nginx-html`
+Push the container to repository `docker push alko89/nginx-html`
 
-`docker push alko89/nginx-html`
+### Pull and run container from Docker Hub
 
-### Pull container from Docker Hub
-
-`docker pull alko89/nginx-html`
-
-`docker run --name docker-nginx -p 80:80 -d alko89/nginx-html`
+`docker run --name nginx-html -p 80:80 -d alko89/nginx-html`
